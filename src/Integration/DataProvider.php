@@ -26,7 +26,7 @@ class DataProvider
      *
      * @return array
      */
-    public function get(array $request)
+    protected function get(array $request)
     {
         // returns a response from external service
     }
