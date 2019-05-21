@@ -5,6 +5,7 @@ namespace src\Decorator;
 use DateTime;
 use Exception;
 use Psr\Cache\CacheItemPoolInterface;
+use Psr\Cache\InvalidArgumentException;
 use Psr\Log\LoggerInterface;
 use src\Integration\DataProvider;
 
@@ -58,6 +59,8 @@ class DecoratorManager extends DataProvider
                 );
 
             return $result;
+        } catch (InvalidArgumentException $e) {
+           $this->logger->error($e->getMessage());
         } catch (Exception $e) {
             $this->logger->critical('Error');
         }
