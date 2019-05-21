@@ -10,7 +10,14 @@ use src\Integration\DataProvider;
 
 class DecoratorManager extends DataProvider
 {
+    /**
+     * @var CacheItemPoolInterface
+     */
     private $cache;
+
+    /**
+     * @var LoggerInterface
+     */
     private $logger;
 
     /**
