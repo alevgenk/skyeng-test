@@ -1,6 +1,6 @@
 <?php
 
-namespace src\Decorator;
+namespace src\Manger;
 
 use DateTime;
 use Exception;
@@ -9,7 +9,7 @@ use Psr\Cache\InvalidArgumentException;
 use Psr\Log\LoggerInterface;
 use src\Integration\DataProvider;
 
-class DecoratorManager extends DataProvider
+class ApiManager
 {
     /**
      * @var CacheItemPoolInterface
@@ -20,17 +20,19 @@ class DecoratorManager extends DataProvider
      * @var LoggerInterface
      */
     private $logger;
+    /**
+     * @var DataProvider
+     */
+    private $provider;
 
     /**
-     * @param string $host
-     * @param string $user
-     * @param string $password
+     * @param DataProvider           $provider
      * @param CacheItemPoolInterface $cache
      */
-    public function __construct($host, $user, $password, CacheItemPoolInterface $cache)
+    public function __construct(DataProvider $provider, CacheItemPoolInterface $cache)
     {
-        parent::__construct($host, $user, $password);
         $this->cache = $cache;
+        $this->provider = $provider;
     }
 
     public function setLogger(LoggerInterface $logger)
@@ -50,7 +52,7 @@ class DecoratorManager extends DataProvider
                 return $cacheItem->get();
             }
 
-            $result = $this->get($input);
+            $result = $this->provider->get($input);
 
             $cacheItem
                 ->set($result)
