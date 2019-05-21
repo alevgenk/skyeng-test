@@ -28,15 +28,12 @@ class ApiManager
     /**
      * @param DataProvider           $provider
      * @param CacheItemPoolInterface $cache
+     * @param LoggerInterface        $logger
      */
-    public function __construct(DataProvider $provider, CacheItemPoolInterface $cache)
+    public function __construct(DataProvider $provider, CacheItemPoolInterface $cache, LoggerInterface $logger)
     {
         $this->cache = $cache;
         $this->provider = $provider;
-    }
-
-    public function setLogger(LoggerInterface $logger)
-    {
         $this->logger = $logger;
     }
 
