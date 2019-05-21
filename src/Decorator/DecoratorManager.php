@@ -60,7 +60,9 @@ class DecoratorManager extends DataProvider
 
             return $result;
         } catch (InvalidArgumentException $e) {
-           $this->logger->error($e->getMessage());
+            if (null !== $this->logger) {
+                $this->logger->error($e->getMessage());
+            }
         } catch (Exception $e) {
             $this->logger->critical('Error');
         }
