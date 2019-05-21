@@ -50,7 +50,7 @@ class DecoratorManager extends DataProvider
                 return $cacheItem->get();
             }
 
-            $result = parent::get($input);
+            $result = $this->get($input);
 
             $cacheItem
                 ->set($result)
