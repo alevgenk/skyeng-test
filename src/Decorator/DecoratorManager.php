@@ -22,19 +22,16 @@ class DecoratorManager extends DataProvider
     private $logger;
 
     /**
-     * @param string $host
-     * @param string $user
-     * @param string $password
+     * @param string                 $host
+     * @param string                 $user
+     * @param string                 $password
      * @param CacheItemPoolInterface $cache
+     * @param LoggerInterface        $logger
      */
-    public function __construct($host, $user, $password, CacheItemPoolInterface $cache)
+    public function __construct($host, $user, $password, CacheItemPoolInterface $cache, LoggerInterface $logger)
     {
         parent::__construct($host, $user, $password);
         $this->cache = $cache;
-    }
-
-    public function setLogger(LoggerInterface $logger)
-    {
         $this->logger = $logger;
     }
 
@@ -60,9 +57,7 @@ class DecoratorManager extends DataProvider
 
             return $result;
         } catch (InvalidArgumentException $e) {
-            if (null !== $this->logger) {
-                $this->logger->error($e->getMessage());
-            }
+            $this->logger->error($e->getMessage());
         } catch (Exception $e) {
             $this->logger->critical('Error');
         }
