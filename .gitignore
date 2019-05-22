@@ -1,3 +1,4 @@
 /.idea
 /vendor
 /skyeng-test.iml
+/.phpunit.result.cache

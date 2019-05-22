@@ -1,18 +1,27 @@
 {
-    "name": "erop/skyeng-test",
-    "authors": [
-        {
-            "name": "Egor Ushakov",
-            "email": "egor.ushakov.ru@gmail.com"
-        }
-    ],
-    "require": {
-        "psr/log": "^1.1",
-        "psr/cache": "^1.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "src\\": "src"
-        }
+  "name": "erop/skyeng-test",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Egor Ushakov",
+      "email": "egor.ushakov.ru@gmail.com"
     }
+  ],
+  "require": {
+    "psr/log": "^1.1",
+    "psr/cache": "^1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "8.1.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "src\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "tests\\": "tests"
+    }
+  }
 }
