@@ -7,11 +7,10 @@ use Psr\Cache\CacheItemInterface;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Log\LoggerInterface;
 use ReflectionException;
-use src\Decorator\DecoratorManager;
 use src\Integration\DataProvider;
 use src\Manger\ApiManager;
 
-class DecoratorManagerTest extends TestCase
+class ApiManagerTest extends TestCase
 {
     /**
      * Test manager behavior if valid cache item acquired from cache
