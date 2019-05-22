@@ -8,6 +8,8 @@ use Psr\Cache\CacheItemPoolInterface;
 use Psr\Log\LoggerInterface;
 use ReflectionException;
 use src\Decorator\DecoratorManager;
+use src\Integration\DataProvider;
+use src\Manger\ApiManager;
 
 class DecoratorManagerTest extends TestCase
 {
@@ -26,7 +28,8 @@ class DecoratorManagerTest extends TestCase
                 ->method('get');
             $cache = $this->getCacheWithCacheItem($cacheItem);
             $logger = $this->createMock(LoggerInterface::class);
-            $manager = new DecoratorManager('host', 'user', 'password', $cache, $logger);
+            $provider = new DataProvider('host', 'user', 'password');
+            $manager = new ApiManager($provider, $cache, $logger);
             $manager->getResponse([]);
         } catch (ReflectionException $e) {
             echo $e->getMessage();
@@ -73,7 +76,8 @@ class DecoratorManagerTest extends TestCase
                 ->method('expiresAt');
             $cache = $this->getCacheWithCacheItem($cacheItem);
             $logger = $this->createMock(LoggerInterface::class);
-            $manager = new DecoratorManager('host', 'user', 'password', $cache, $logger);
+            $provider = new DataProvider('host', 'user', 'password');
+            $manager = new ApiManager($provider, $cache, $logger);
             $manager->getResponse([]);
         } catch (ReflectionException $e) {
             echo $e->getMessage();
