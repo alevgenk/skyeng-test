@@ -57,6 +57,8 @@ class ApiManager
                     (new DateTime())->modify('+1 day')
                 );
 
+            $this->cache->save($cacheItem);
+
             return $result;
         } catch (InvalidArgumentException $e) {
            $this->logger->error($e->getMessage());
